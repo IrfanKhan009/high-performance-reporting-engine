@@ -1,0 +1,12 @@
+services:
+  api:
+    build: .
+    ports:
+      - "8080:8080"
+    environment:
+      # Required: no default on purpose. Set it in .env (see .env.example).
+      Reports__DownloadSecret: ${REPORTS_DOWNLOAD_SECRET:?set REPORTS_DOWNLOAD_SECRET in .env}
+    volumes:
+      - report-data:/data
+volumes:
+  report-data:
